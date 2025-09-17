@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain & IoT · Curso (SPA estática)</title>
+  <meta name="description" content="Curso Blockchain e IoT · Módulo 1, Caso Harvard InduWare, Exhibits, entregas Blackboard." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- PicoCSS para estilo limpio sin build -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css">
+  <style>
+    :root { --maxw: 1100px; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 1rem; }
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); border-bottom: 1px solid var(--pico-muted-border-color); z-index: 10; }
+    nav a { cursor: pointer; }
+    .grid-2 { display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1.2fr 1fr; } }
+    .card { border: 1px solid var(--pico-muted-border-color); border-radius: 16px; padding: 1rem 1.2rem; }
+    .tag { display: inline-block; padding: .25rem .6rem; border: 1px solid var(--pico-muted-border-color); border-radius: 999px; font-size: .8rem; }
+    .muted { color: var(--pico-muted-color); }
+    .hide { display: none !important; }
+    .list > li { margin: .4rem 0; }
+    .kbd { border: 1px solid var(--pico-muted-border-color); padding: .08rem .35rem; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85rem; }
+    .pill { border-radius: 999px; padding: .2rem .7rem; }
+    .accent { background: var(--pico-primary-background); color: var(--pico-primary-inverse); }
+    canvas { background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: 12px; padding: .6rem; }
+  </style>
+</head>
+<body data-theme="light">
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong>Blockchain & IoT · Curso</strong></li>
+      </ul>
+      <ul>
+        <li><a data-route="home">Inicio</a></li>
+        <li><a data-route="mod1">Módulo 1</a></li>
+        <li><a data-route="case">Caso Harvard</a></li>
+        <li><a data-route="exhibits">Exhibits</a></li>
+        <li><a data-route="bb">Blackboard</a></li>
+        <li>
+          <details role="list">
+            <summary>Más</summary>
+            <ul>
+              <li><a data-route="about">Sobre la asignatura</a></li>
+              <li><button id="toggleTheme" class="secondary outline">🌙 Modo</button></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" id="app">
+    <!-- Vistas SPA (ruteo hash) -->
+    <section data-view="home">
+      <article class="grid-2">
+        <div class="card">
+          <h2>Bienvenida</h2>
+          <p>Curso práctico y progresivo: IoT + Blockchain aplicados a Industria 4.0. Laboratorios, mini-proyecto personal y <em>caso Harvard</em> “InduWare”.</p>
+          <ul class="list">
+            <li><span class="tag">IoT</span> Sensores · Protocolos · Plataformas Cloud</li>
+            <li><span class="tag">Blockchain</span> Integridad · Trazabilidad · Confianza</li>
+            <li><span class="tag">Proyecto</span> Entregas en Blackboard y presentación final</li>
+          </ul>
+          <p><button class="accent" data-route="mod1">Ir a Módulo 1</button></p>
+        </div>
+        <div class="card">
+          <h3>Objetivos</h3>
+          <p>Diseñar, analizar y evaluar soluciones IoT integradas con Blockchain; detectar vulnerabilidades y justificar decisiones equilibrando coste, seguridad y escalabilidad.</p>
+          <small class="muted">Metodología: teoría + lab + personalización. Evaluación con 3 hitos en Blackboard y examen final.</small>
+        </div>
+      </article>
+    </section>
+
+    <section class="hide" data-view="mod1">
+      <h2>Módulo 1 · Ecosistema IoT (Sesiones 1–6)</h2>
+      <details open class="card">
+        <summary><strong>Sesión 1</strong> · Del objeto a la red: introducción al IoT</summary>
+        <p><b>Teoría:</b> definición, ejemplos (smart home, wearables, coches conectados), valor del dato.</p>
+        <p><b>Práctica:</b> mini-lab en Tinkercad/Node-RED (sensor virtual → dashboard).</p>
+        <p><b>Evaluación:</b> Cuestionario de repaso (Blackboard 1).</p>
+      </details>
+
+      <details class="card">
+        <summary><strong>Sesión 2</strong> · Capas de un sistema IoT</summary>
+        <ul>
+          <li><b>Percepción:</b> sensores y actuadores.</li>
+          <li><b>Red:</b> protocolos y gateways.</li>
+          <li><b>Aplicación:</b> plataformas y servicios.</li>
+        </ul>
+        <p><b>Ejemplo:</b> riego inteligente (sensor humedad → LoRa/WiFi → app).</p>
+        <p><b>Práctica:</b> Análisis de un sistema smart-home (movimiento + WiFi + app móvil).</p>
+        <p><b>Entrega:</b> Mapa de arquitectura básica.</p>
+      </details>
+
+      <details class="card">
+        <summary><strong>Sesión 3</strong> · Sensores, los ojos del IoT</summary>
+        <p>Tipos por sector (salud, industria, ciudad). Lab con kit/simulador.</p>
+        <p><b>Evaluación:</b> Micro-informe en Blackboard.</p>
+      </details>
+
+      <details class="card">
+        <summary><strong>Sesión 4</strong> · Conectando el mundo físico</summary>
+        <p>Protocolos MQTT, CoAP, LoRaWAN. Config básica en simulador.</p>
+        <p><b>Evaluación:</b> Resolución de problemas.</p>
+      </details>
+
+      <details class="card">
+        <summary><strong>Sesión 5</strong> · Ecosistema y plataformas IoT</summary>
+        <p>Actores (AWS, Azure, Google, Siemens MindSphere, ThingsBoard).</p>
+        <p><b>Evaluación:</b> Debate comparativo.</p>
+      </details>
+
+      <details class="card">
+        <summary><strong>Sesión 6</strong> · Industria 4.0 y mantenimiento predictivo</summary>
+        <p>Casos industriales. Estudio aplicado al caso Harvard (InduWare).</p>
+        <p><b>Evaluación:</b> Presentación breve por grupos.</p>
+      </details>
+
+      <article class="card">
+        <h3>Buscar en Módulo 1</h3>
+        <input id="search" type="search" placeholder="Escribe para filtrar sesiones (ej.: MQTT, sensores, riego)…">
+        <ul id="results" class="list"></ul>
+        <small class="muted">Atajo: pulsa <span class="kbd">/</span> para enfocar la búsqueda.</small>
+      </article>
+    </section>
+
+    <section class="hide" data-view="case">
+      <article class="grid-2">
+        <div class="card">
+          <h2>Caso Harvard · InduWare</h2>
+          <p>Fábrica conectada con incidentes de ciberseguridad. Dilema: reforzar arquitectura tradicional o integrar Blockchain para trazabilidad e integridad de datos.</p>
+          <ul class="list">
+            <li>Opciones: continuidad mínima · Blockchain privado · híbrido + nube</li>
+            <li>Regulación: NIS2 (UE) · exigencias de clientes</li>
+          </ul>
+          <p><a class="secondary" data-route="exhibits">Ver Exhibits</a></p>
+        </div>
+        <div class="card">
+          <h3>Objetivo del caso</h3>
+          <p>Analizar trade-offs seguridad/coste/escalabilidad y proponer una arquitectura IoT-Blockchain viable.</p>
+          <span class="tag">Presentación intermedia · Sesión 28</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="hide" data-view="exhibits">
+      <h2>Exhibits</h2>
+      <article class="card">
+        <h3>Exhibit 2 — Incidentes de Ciberseguridad (2023–2024)</h3>
+        <canvas id="chart" height="150"></canvas>
+        <small class="muted">Tipos: Manipulación de datos · Acceso no autorizado · Pérdida de registros · DDoS</small>
+      </article>
+
+      <article class="card">
+        <h3>Exhibit 3 — Costes comparados (resumen)</h3>
+        <ul class="list">
+          <li><b>Refuerzo centralizado:</b> €0,5M inicial / €0,8M anual — rápido, menor confianza.</li>
+          <li><b>Blockchain privado:</b> €1,2M / €1,0M — trazabilidad, complejidad técnica.</li>
+          <li><b>Híbrido + nube:</b> €1,8M / €1,3M — seguridad y flexibilidad, coste superior.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="hide" data-view="bb">
+      <h2>Entregas Blackboard</h2>
+      <article class="card">
+        <h3>Entrega 1 (Sesión 12) · Seguridad IoT + Blockchain</h3>
+        <p>Documento individual (2–3 págs): capa a proteger, argumentos técnicos, referencia a exhibits.</p>
+      </article>
+      <article class="card">
+        <h3>Entrega 2 (Sesión 20) · Plataforma + Integración</h3>
+        <p>Documento individual (3–4 págs): elección de plataforma (AWS/Azure/Siemens/OS), costes y arquitectura propuesta.</p>
+      </article>
+      <article class="card">
+        <h3>Entrega 3 (Sesión 28) · Propuesta preliminar (grupal)</h3>
+        <p>Documento grupal (6–8 págs): arquitectura IoT-Blockchain, riesgos y plan de implementación.</p>
+      </article>
+    </section>
+
+    <section class="hide" data-view="about">
+      <h2>Sobre la asignatura</h2>
+      <p>Asignatura optativa de 6 ECTS (4º curso). Metodología mixta: expositiva, práctica, seminarios, tutorías y trabajo autónomo. Evaluación: examen final 50%, entregas y proyecto 50%.</p>
+      <small class="muted">Guía docente oficial disponible en el campus.</small>
+    </section>
+  </main>
+
+  <!-- Chart.js desde CDN (solo cliente) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    // --- SPA minimalista (ruteo hash y data-route) ---
+    const app = document.getElementById('app');
+    const views = [...app.querySelectorAll('[data-view]')];
+    const linkEls = [...document.querySelectorAll('[data-route]')];
+
+    function show(view) {
+      views.forEach(v => v.classList.toggle('hide', v.getAttribute('data-view') !== view));
+      // Persistencia simple en hash
+      location.hash = view;
+      if (view === 'exhibits') requestAnimationFrame(renderChart);
+    }
+
+    linkEls.forEach(a => a.addEventListener('click', () => show(a.dataset.route)));
+    window.addEventListener('hashchange', () => {
+      const v = location.hash.replace('#', '') || 'home';
+      show(v);
+    });
+    // Inicial
+    show(location.hash.replace('#','') || 'home');
+
+    // --- Modo oscuro claro ---
+    const btnTheme = document.getElementById('toggleTheme');
+    function setTheme(t) { document.body.dataset.theme = t; localStorage.setItem('theme', t); }
+    const saved = localStorage.getItem('theme'); if (saved) setTheme(saved);
+    btnTheme?.addEventListener('click', () => setTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+    // --- Búsqueda en Módulo 1 ---
+    const search = document.getElementById('search');
+    const results = document.getElementById('results');
+    const sessions = [
+      {t:'Sesión 1', d:'Introducción, ejemplos, mini-lab, Blackboard 1'},
+      {t:'Sesión 2', d:'Capas IoT: Percepción, Red, Aplicación'},
+      {t:'Sesión 3', d:'Sensores por sector, lab con kit'},
+      {t:'Sesión 4', d:'Protocolos: MQTT, CoAP, LoRaWAN'},
+      {t:'Sesión 5', d:'Plataformas IoT: AWS, Azure, Google'},
+      {t:'Sesión 6', d:'Industria 4.0 y mantenimiento predictivo'}
+    ];
+    function doSearch(q) {
+      results.innerHTML = '';
+      if (!q) return;
+      sessions.filter(s => (s.t+s.d).toLowerCase().includes(q.toLowerCase()))
+              .forEach(s => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${s.t}</strong> — <span class="muted">${s.d}</span>`;
+                results.appendChild(li);
+              });
+    }
+    search?.addEventListener('input', e => doSearch(e.target.value));
+    window.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== search) { e.preventDefault(); search?.focus(); }});
+
+    // --- Exhibit 2: gráfico de incidentes (client-side) ---
+    let chart;
+    function renderChart() {
+      const ctx = document.getElementById('chart');
+      if (!ctx) return;
+      if (chart) return; // evita redibujar
+      const labels = ["Feb 2023 (Alemania)", "Jul 2023 (Polonia)", "Nov 2023 (Francia)", "Mar 2024 (España)"];
+      const data = [1.2, 0.5, 0.3, 0.2]; // M€
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Coste estimado (M€)',
+            data,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, suggestedMax: 1.5, title: { display: true, text: 'Millones €' } }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: {
+              label: ctx => `${ctx.parsed.y} M€`
+            } }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
