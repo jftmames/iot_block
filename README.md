@@ -1,4 +1,4 @@
-# 📘 Blockchain & IoT – Curso Universitario (SPA estática)
+# 📘 Blockchain & IoT – Curso Universitario
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
